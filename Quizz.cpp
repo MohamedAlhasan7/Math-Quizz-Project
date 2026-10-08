@@ -111,6 +111,92 @@ void GenerateQuizzQuestions(stQuizz& Quizz)
 	}
 }
 
+string GetOpTypeSymbol(enOperationType OperationType)
+{
+	switch (OperationType)
+	{
+	case enOperationType::Add:
+		return "+";
+	case enOperationType::Sub:
+		return "-";
+	case enOperationType::Mul:
+		return "*";
+	case enOperationType::Div:
+		return "/";
+	case enOperationType::MixOp:
+		return "Mix";
+	}
+}
+
+void PrintTheQuestion(stQuizz& Quizz, short QuestionNumber)
+{
+	cout << "\nQuestion " << QuestionNumber + 1 << "/" << Quizz.NumberOfQuestions << "]\n\n";
+	cout << Quizz.QuestionsList[QuestionNumber].Number1 << "\n";
+	cout << Quizz.QuestionsList[QuestionNumber].Number2 << " ";
+	cout << GetOpTypeSymbol(Quizz.QuestionsList[QuestionNumber].OperationType);
+	cout << "\n_________\n";
+}
+
+int ReadPlayerAnswer()
+{
+	int PlayerAnswer;
+	cin >> PlayerAnswer;
+	return PlayerAnswer;
+}
+
+void ScreenColor(bool AnswerResult)
+{
+	if (AnswerResult)
+	{
+		system("color 2F");
+	}
+	else
+	{
+		system("color 4F");
+	}
+}
+
+void CorrectTheQuestionAnswer(stQuizz& Quizz, short QuestionNumber)
+{
+	if (Quizz.QuestionsList[QuestionNumber].AnswerResult != Quizz.QuestionsList[QuestionNumber].CorrectAnswer)
+	{
+		Quizz.QuestionsList[QuestionNumber].AnswerResult = false;
+		Quizz.NumberOfWrongAnswers++;
+
+		cout << "Wrong Answer :-( \n";
+		cout << "The Right Answer is: ";
+		cout << Quizz.QuestionsList[QuestionNumber].CorrectAnswer;
+		cout << "\n";
+	}
+	else
+	{
+		Quizz.QuestionsList[QuestionNumber].AnswerResult = true;
+		Quizz.NumberOfRightAnswers++;
+
+		cout << "Right Answer :-) ";
+		cout << "\n";
+	}
+
+	cout << "\n";
+
+	ScreenColor(Quizz.QuestionsList[QuestionNumber].AnswerResult);
+}
+
+void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
+{
+	for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions; QuestionNumber++)
+	{
+		PrintTheQuestion(Quizz, QuestionNumber);
+
+		Quizz.QuestionsList[QuestionNumber].PlayerAnswer = ReadPlayerAnswer();
+
+		CorrectTheQuestionAnswer(Quizz, QuestionNumber);
+	}
+
+	Quizz.IsPass = (Quizz.NumberOfRightAnswers >= Quizz.NumberOfWrongAnswers);
+
+}
+
 void PlayMathGame()
 {
 	stQuizz Quizz;
@@ -120,4 +206,6 @@ void PlayMathGame()
 	Quizz.OperationType = ReadOperationType();
 
 	GenerateQuizzQuestions(Quizz);
+
+	AskAndCorrectQuestionListAnswers(Quizz);
 }

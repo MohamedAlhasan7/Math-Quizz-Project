@@ -56,4 +56,16 @@ stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType Opera
 
 void GenerateQuizzQuestions(stQuizz& Quizz);
 
+string GetOpTypeSymbol(enOperationType OperationType);
+
+void PrintTheQuestion(stQuizz& Quizz, short QuestionNumber);
+
+int ReadPlayerAnswer();
+
+void ScreenColor(bool AnswerResult);
+
+void CorrectTheQuestionAnswer(stQuizz& Quizz, short QuestionNumber);
+
+void AskAndCorrectQuestionListAnswers(stQuizz& Quizz);
+
 void PlayMathGame();
