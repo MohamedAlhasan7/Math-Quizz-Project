@@ -158,7 +158,7 @@ void ScreenColor(bool AnswerResult)
 
 void CorrectTheQuestionAnswer(stQuizz& Quizz, short QuestionNumber)
 {
-	if (Quizz.QuestionsList[QuestionNumber].AnswerResult != Quizz.QuestionsList[QuestionNumber].CorrectAnswer)
+	if (Quizz.QuestionsList[QuestionNumber].PlayerAnswer != Quizz.QuestionsList[QuestionNumber].CorrectAnswer)
 	{
 		Quizz.QuestionsList[QuestionNumber].AnswerResult = false;
 		Quizz.NumberOfWrongAnswers++;
@@ -226,16 +226,16 @@ string GetQuestionLevelText(enQuestionLevel QuestionLevel)
 
 void PrintQuizzResults(stQuizz Quizz)
 {
-	cout << "\n_____________________________\n\n";
-	cout << "Final Result: " << GetFinalResultText(Quizz.IsPass);
-	cout << "\n_____________________________\n\n";
+	cout << "\n_______________________________\n\n";
+	cout << " Final Result: " << GetFinalResultText(Quizz.IsPass);
+	cout << "\n_______________________________\n\n";
 
 	cout << " Number Of Questions     : " << Quizz.NumberOfQuestions << "\n";
 	cout << " Question Level          : " << GetQuestionLevelText(Quizz.QuestionLevel) << "\n";
 	cout << " Operation Type          : " << GetOpTypeSymbol(Quizz.OperationType) << "\n";
 	cout << " Number Of Right Answers : " << Quizz.NumberOfRightAnswers << "\n";
 	cout << " Number Of Wrong Answers : " << Quizz.NumberOfWrongAnswers;
-	cout << "\n_____________________________\n";
+	cout << "\n_______________________________\n\n";
 }
 
 void PlayMathGame()
