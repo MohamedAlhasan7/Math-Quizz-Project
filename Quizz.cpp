@@ -252,3 +252,22 @@ void PlayMathGame()
 
 	PrintQuizzResults(Quizz);
 }
+
+void ResetScreen()
+{
+	system("cls");
+	system("color 0F");
+}
+
+void StartGame()
+{
+	char PlayAgain = 'Y';
+	do
+	{
+		ResetScreen();
+		PlayMathGame();
+		cout << "Do you want to play again? Y/N? ";
+		cin >> PlayAgain;
+	} while (PlayAgain == 'y' || PlayAgain == 'Y');
+
+}

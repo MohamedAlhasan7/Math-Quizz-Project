@@ -75,3 +75,7 @@ string GetQuestionLevelText(enQuestionLevel QuestionLevel);
 void PrintQuizzResults(stQuizz Quizz);
 
 void PlayMathGame();
+
+void ResetScreen();
+
+void StartGame();
