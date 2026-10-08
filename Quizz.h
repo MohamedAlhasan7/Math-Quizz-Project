@@ -48,4 +48,12 @@ enQuestionLevel ReadQuestionLevel();
 
 enOperationType ReadOperationType();
 
+int RandomNumber(short From, short To);
+
+int SimpleCalculator(int Number1, int Number2, enOperationType OperationType);
+
+stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType OperationType);
+
+void GenerateQuizzQuestions(stQuizz& Quizz);
+
 void PlayMathGame();
