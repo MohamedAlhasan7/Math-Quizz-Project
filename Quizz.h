@@ -44,4 +44,8 @@ struct stQuizz
 
 short ReadHowManyQuestions();
 
+enQuestionLevel ReadQuestionLevel();
+
+enOperationType ReadOperationType();
+
 void PlayMathGame();
