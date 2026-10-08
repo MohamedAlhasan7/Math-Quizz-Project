@@ -1,0 +1,8 @@
+﻿#include <iostream>
+#include "Quizz.h"
+using namespace std;
+
+int main()
+{
+    return 0;
+}
