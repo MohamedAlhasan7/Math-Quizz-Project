@@ -197,6 +197,47 @@ void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
 
 }
 
+string GetFinalResultText(bool Pass)
+{
+	if (Pass)
+	{
+		return "Pass";
+	}
+	else
+	{
+		return "Fail";
+	}
+}
+
+string GetQuestionLevelText(enQuestionLevel QuestionLevel)
+{
+	switch (QuestionLevel)
+	{
+	case enQuestionLevel::EasyLevel:
+		return "Easy";
+	case enQuestionLevel::MedLevel:
+		return "Medium";
+	case enQuestionLevel::HardLevel:
+		return "Hard";
+	case enQuestionLevel::Mix:
+		return "Mix";
+	}
+}
+
+void PrintQuizzResults(stQuizz Quizz)
+{
+	cout << "\n_____________________________\n\n";
+	cout << "Final Result: " << GetFinalResultText(Quizz.IsPass);
+	cout << "\n_____________________________\n\n";
+
+	cout << " Number Of Questions     : " << Quizz.NumberOfQuestions << "\n";
+	cout << " Question Level          : " << GetQuestionLevelText(Quizz.QuestionLevel) << "\n";
+	cout << " Operation Type          : " << GetOpTypeSymbol(Quizz.OperationType) << "\n";
+	cout << " Number Of Right Answers : " << Quizz.NumberOfRightAnswers << "\n";
+	cout << " Number Of Wrong Answers : " << Quizz.NumberOfWrongAnswers;
+	cout << "\n_____________________________\n";
+}
+
 void PlayMathGame()
 {
 	stQuizz Quizz;
@@ -208,4 +249,6 @@ void PlayMathGame()
 	GenerateQuizzQuestions(Quizz);
 
 	AskAndCorrectQuestionListAnswers(Quizz);
+
+	PrintQuizzResults(Quizz);
 }

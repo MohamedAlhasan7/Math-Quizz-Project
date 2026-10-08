@@ -68,4 +68,10 @@ void CorrectTheQuestionAnswer(stQuizz& Quizz, short QuestionNumber);
 
 void AskAndCorrectQuestionListAnswers(stQuizz& Quizz);
 
+string GetFinalResultText(bool Pass);
+
+string GetQuestionLevelText(enQuestionLevel QuestionLevel);
+
+void PrintQuizzResults(stQuizz Quizz);
+
 void PlayMathGame();
